@@ -475,7 +475,7 @@
             x.push(currentArray);
           }
           console.log(x);
-          return x;
+          buildPage(x);
         })
         .catch(error => console.log('Error fetching data:  --  --  --'));
     }
@@ -834,13 +834,11 @@
           }
         ],
       ];
-      return y;
+      buildPage(y);
     }
 
-    function buildPage() {
+    function buildPage(data) {
       let container = document.querySelector("#target");
-      //let data = fetchMock();
-      let data = fetchSheetByID();
       window.n_data = data;
       data.forEach(el => {
         let item = document.createElement("div");
@@ -985,7 +983,8 @@
       let result = Object.values(array).reduce((acc, curr) => acc.concat(curr), []);
       return result;
     }
-    buildPage();
+    //fetchMock();
+    fetchSheetByID();
   </script>
   <style>
     /* TEMP */
