@@ -3,7 +3,421 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="englishN.css" />
+  <style>
+    @charset "UTF-8";
+
+    /* Default CSS */
+    @media (min-width: 1em) {
+
+      *,
+      :after,
+      :before {
+        box-sizing: border-box;
+      }
+
+      svg {
+        overflow: hidden;
+      }
+
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 0;
+      }
+
+      button,
+      a {
+        cursor: pointer;
+      }
+
+      img,
+      svg {
+        display: block;
+      }
+
+      .n_container {
+        font-size: 1rem;
+        line-height: 1;
+        text-align: left;
+      }
+
+      .ds--grid .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -8px;
+        margin-left: -8px;
+      }
+
+      .ds--grid [class*=col-] {
+        position: relative;
+        width: 100%;
+        padding-right: 8px;
+        padding-left: 8px;
+      }
+
+      .n_container .d-none {
+        display: none;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .ds--grid .row {
+        margin-right: -16px;
+        margin-left: -16px;
+      }
+
+      .ds--grid [class*=col-] {
+        padding-right: 16px;
+        padding-left: 16px;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .ds--grid .row {
+        margin-right: -24px;
+        margin-left: -24px;
+      }
+
+      .ds--grid [class*=col-] {
+        padding-right: 24px;
+        padding-left: 24px;
+      }
+    }
+
+    @media (min-width: 1280px) {}
+
+    /* Custom CSS */
+
+    @media (min-width: 1em) {
+      .n_button {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        text-align: center;
+        font-family: "72 Brand", "72 Brand Variable", "Arial", "Helvetica", sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+        padding: 8px 9px;
+        margin: 0;
+        border: 1px solid #fff;
+        border-radius: 8px;
+        color: #000;
+        background: #fff;
+        transition: background .25s linear;
+        transition-property: color, border, background;
+      }
+
+      .n_button:focus {
+        outline: .125rem solid #007db8;
+        outline-offset: .125rem;
+      }
+
+      .n_button:hover {
+        text-decoration: none;
+      }
+
+      .n_button:hover:focus,
+      .n_button:active:focus {
+        outline: none;
+      }
+
+      .n_button:disabled {
+        pointer-events: none;
+        opacity: .4;
+      }
+
+      .n_button-primary,
+      .n_button-primary:visited {
+        color: #fff;
+        background: #0070F2;
+        border-color: #0070F2;
+      }
+
+      .n_button-secondary,
+      .n_button-secondary:visited {
+        color: #0040B0;
+        background: #fff;
+        border-color: #475E75;
+      }
+
+      .n_button-tetriary,
+      .n_button-tetriary:visited {
+        color: #0040B0;
+        background: transparent;
+        border-color: transparent;
+      }
+
+      .n_button-primary:hover {
+        color: #fff;
+        background: #0040B0;
+        border-color: #0040B0;
+      }
+
+      .n_button-secondary:hover,
+      .n_button-tetriary:hover {
+        color: #0040B0;
+        background: #EAECEE;
+        border-color: #475E75;
+      }
+
+      .n_button-primary:active,
+      .n_button-secondary:active,
+      .n_button-tetriary:active {
+        color: #0040B0;
+        background: #fff;
+        border-color: #0040B0;
+      }
+
+      @media (min-width:980px) {
+        .n_button {
+          /* padding: 11px 13px; */
+          justify-content: center;
+        }
+      }
+    }
+
+    .header,
+    .footer {
+      height: 75px;
+      width: 100%;
+      background: #111;
+    }
+
+    @media (min-width: 1em) {
+      .df {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .n_col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-top: 20px;
+      }
+
+      .row {
+        padding-top: 40px;
+        padding-bottom: 40px;
+      }
+
+      .n_title {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1;
+        width: 100%;
+        margin-bottom: 12px;
+      }
+
+      .n_tile {
+        background: #ffec2f;
+        border: 2px solid black;
+        border-radius: 12px;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 10px;
+      }
+
+      .n_indicator {
+        width: 32px;
+        height: 32px;
+        border: 1px solid black;
+        border-radius: 4px;
+        background: white;
+        margin-right: 12px;
+        margin-left: 12px;
+        position: relative;
+      }
+
+      [data-active=true] .n_indicator {
+        background: #84ffd3;
+      }
+
+      [data-active=true] .n_indicator::before {
+        content: "✔";
+        position: absolute;
+        font-size: 20px;
+        left: 6px;
+        top: 5px;
+      }
+
+      [data-preview=false] .n_items {
+        display: none;
+      }
+
+      .n_items {
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 6px;
+        background: #fff;
+      }
+
+      .n_items p {
+        width: 100%;
+      }
+
+      .n_items p:nth-child(n) {
+        font-size: 20px;
+        line-height: 1.2;
+        font-weight: 700;
+      }
+
+      .n_items p:nth-child(2n) {
+        padding-left: 40px;
+        padding-left: 75px;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 4px solid black;
+        font-weight: 400;
+      }
+
+      .n_items p:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border: none;
+      }
+
+      .n_modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 0;
+        right: 0;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .9);
+        z-index: 12;
+      }
+
+      .n_close {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        right: -45px;
+        top: -45px;
+        border: none;
+        background: 0 0;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .n_close svg {
+        width: 32px;
+        height: 32px;
+        fill: #fff;
+      }
+
+      .n_modal-inner {
+        background: white;
+        border-radius: 12px;
+        max-width: 80%;
+        max-height: 80vh;
+        position: relative;
+      }
+
+      [data-hint] .n_modal-inner {
+        width: 80%;
+      }
+
+      .n_modal .n_items,
+      .n_modal .n_test {
+        margin-top: 0;
+        padding: 40px;
+        overflow-y: scroll;
+        max-height: 80vh;
+      }
+
+      .n_test {
+        justify-content: space-between;
+      }
+
+      .n_test .df {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .n_start {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .n_test-o,
+      .n_test-t {
+        width: 100%;
+        text-align: center;
+        font-size: 24px;
+      }
+
+      .n_test-o {
+        line-height: 1;
+        padding: 5px;
+        color: grey;
+        background: grey;
+      }
+
+      [data-hint=true] .n_test-o {
+        background: #abf6ac;
+      }
+
+      .n_test-t {
+        padding: 0 20px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .n_test-title {
+        font-size: 32px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 12px;
+      }
+
+      .n_test-title span {
+        width: 50px;
+        text-align: right;
+      }
+    }
+
+
+    @media (min-width: 640px) {
+      .n_col {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .n_col {
+        flex: 0 0 calc(100%/3);
+        max-width: calc(100%/3);
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .n_col {
+        flex: 0 0 25%;
+        max-width: 25%;
+      }
+    }
+
+    @media (min-width: 1600px) {}
+  </style>
 
   <title>English</title>
 </head>
@@ -23,7 +437,7 @@
 
   <div class="footer w-100"></div>
   <script>
-    function fetchSheetID(id = "940445634") {
+    function fetchSheetByID(id = "940445634") {
       id = "&gid=" + id;
       const url = `https://docs.google.com/spreadsheets/d/e/2PACX-1vTrxY1GNsc-_gKMXqhHddJCXC2D48vw9XqbWjCtmornQFLv38PX6xt_d2E2bwwecEMXwyHp4VHJVqOl/pub?output=csv${id}`;
       const url1 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTrxY1GNsc-_gKMXqhHddJCXC2D48vw9XqbWjCtmornQFLv38PX6xt_d2E2bwwecEMXwyHp4VHJVqOl/pub?output=csv';
@@ -425,7 +839,8 @@
 
     function buildPage() {
       let container = document.querySelector("#target");
-      let data = fetchMock();
+      //let data = fetchMock();
+      let data = fetchSheetByID();
       window.n_data = data;
       data.forEach(el => {
         let item = document.createElement("div");
