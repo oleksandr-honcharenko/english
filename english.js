@@ -416,7 +416,7 @@ function buildPage(data) {
     let info = "";
     el.forEach((obj, index) => {
       if (index === 0) { return; }
-      info += `<p>${index}) ${obj.eng}</p><p>${obj.ukr.replace(";", "<br>")}</p>`;
+      info += `<p>${index}) ${obj.eng}</p><p>${obj.ukr.replace(";", ", <br>")}</p>`;
     });
     list.innerHTML = info;
     container.append(item);
@@ -498,7 +498,7 @@ function createCheckModal() {
     <div class="n_test df">
       <div class="df"><h4 class="n_test-title df"><span class="">1</span>&nbsp;of ${targetArr.length}</h4></div>
       <h4 class="n_test-o">${targetArr[0].eng}</h4>
-      <h4 class="n_test-t">${targetArr[0].ukr.replace(";", " <br>")}</h4>
+      <h4 class="n_test-t">${targetArr[0].ukr.replace(";", ", <br>")}</h4>
       <button class="n_button n_button-secondary" data-action="Show">Show</button>
       <button class="n_button n_button-primary" data-action="Next">Next</button>
     </div>
@@ -513,7 +513,7 @@ function createCheckModal() {
   let currentT = modal.querySelector(".n_test-t");
   nextBtn.addEventListener("click", function () {
     currentO.innerHTML = targetArr[currentItem].eng;
-    currentT.innerHTML = targetArr[currentItem].ukr.replace(";", " <br>");
+    currentT.innerHTML = targetArr[currentItem].ukr.replace(";", ", <br>");
     currentItem++;
     currentItemContainer.innerHTML = currentItem;
     modal.dataset.hint = "false";
