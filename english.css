@@ -373,10 +373,6 @@
     position: relative;
   }
 
-  [data-hint] .n_modal-inner {
-    width: 80%;
-  }
-
   .n_modal .n_items,
   .n_modal .n_test {
     margin-top: 0;
@@ -397,6 +393,7 @@
   .n_start {
     width: 100%;
     justify-content: center;
+    align-items: center;
   }
 
   .n_test-o,
