@@ -437,6 +437,14 @@ function setInteraction(container) {
     start.blur();
     createCheckModal();
   });
+  let disableAll = document.querySelector('[data-action="Exclude"]');
+  disableAll.addEventListener("click", function (e) {
+    disableAll.blur();
+    let sets = container.querySelectorAll('[data-active]');
+    sets.forEach( el => {
+      el.dataset.active = "false";
+    });
+  });
 }
 function triggerBtn(b, tile) {
   let set = b.dataset.set;
@@ -479,6 +487,10 @@ function createCheckModal() {
     let name = el[0];
     targetObj[name] = x;
   });
+  let includedArrs = document.querySelectorAll("[data-active='true']");
+  if (includedArrs.length === 0) {
+    return;
+  }
   let excludedArrs = document.querySelectorAll("[data-active='false']");
   excludedArrs.forEach(el => {
     let set = el.dataset.set;
